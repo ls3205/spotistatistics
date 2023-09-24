@@ -10,10 +10,13 @@ import {
     DropdownMenuTrigger,
 } from "./ui/Dropdown";
 import { SunMoonIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-interface ThemeToggleProps {}
+interface ThemeToggleProps {
+    className?: string
+}
 
-const ThemeToggle: React.FC<ThemeToggleProps> = ({}) => {
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
     const { theme, setTheme } = useTheme();
 
     useEffect(() => {
@@ -58,7 +61,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({}) => {
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger className="mx-2">
+            <DropdownMenuTrigger className={cn('mx-2', className)}>
                 <SunMoonIcon className="text-black dark:text-white" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="border-white bg-neutral-100 text-black dark:border-black dark:bg-neutral-900 dark:text-white">

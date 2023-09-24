@@ -7,7 +7,6 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "./ui/Dropdown";
-import { getAuthSession } from "@/lib/auth";
 import { Avatar, AvatarFallback } from "./ui/Avatar";
 import Image from "next/image";
 import { LogOutIcon, UserIcon } from "lucide-react";
@@ -20,8 +19,6 @@ interface AccountDropdownProps {
 }
 
 const AccountDropdown: React.FC<AccountDropdownProps> = ({ user }) => {
-    console.log(user);
-
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
@@ -41,7 +38,7 @@ const AccountDropdown: React.FC<AccountDropdownProps> = ({ user }) => {
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="flex flex-col justify-center border-white bg-neutral-100 dark:border-black dark:bg-neutral-900">
-                <DropdownMenuItem className="flex flex-row">
+                <DropdownMenuItem className="flex flex-row my-2">
                     <Avatar className="mx-2">
                         {user.image ? (
                             <Image
@@ -58,7 +55,7 @@ const AccountDropdown: React.FC<AccountDropdownProps> = ({ user }) => {
                     </Avatar>
 
                     <div className="flex flex-col">
-                        <h1>{user.name}</h1>
+                        <h1 className="text-lg">{user.name}</h1>
                         <h3>{user.email}</h3>
                     </div>
                 </DropdownMenuItem>
