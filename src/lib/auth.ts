@@ -12,26 +12,29 @@ export const authOptions: NextAuthOptions = {
     providers: [
         SpotifyProvider({
             clientId: process.env.SPOTIFY_CLIENT_ID!,
-            clientSecret: process.env.SPOTIFY_CLIENT_SECRET!
+            clientSecret: process.env.SPOTIFY_CLIENT_SECRET!,
+            profile(profile) {
+                return {
+                    id: profile.id,
+                    name: profile.display_name,
+                    email: profile.email,
+                    image: profile.images?.[0]?.url
+                }
+            }
         })
     ],
     callbacks: {
-        async session({ token, session }) {
-            if (token) {
-                session.user!.name = token.name
-                session.user!.email = token.email
-                session.user!.image = token.image as string
-            }
+        async session({ session, user }) {
+            session.user = user
 
             return session
         },
-        async jwt({ token, profile }) {
-            return {
-                token: token,
-                name: profile?.name,
-                email: profile?.email,
-                image: profile?.image,
+        async jwt({ token, profile, account }) {
+            if (account) {
+                token.accessToken = account.refresh_token;
             }
+
+            return token
         },
         redirect() {
             return '/'
