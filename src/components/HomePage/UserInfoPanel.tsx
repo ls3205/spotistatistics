@@ -5,17 +5,17 @@ import React from "react";
 import { Avatar, AvatarFallback } from "../ui/Avatar";
 
 interface UserInfoPanelProps {
-    user: Pick<User, "name" | "image" | "email"> | null;
+    user: Pick<User, "name" | "image" | "email" | "sub">;
 }
 
 const UserInfoPanel: React.FC<UserInfoPanelProps> = ({ user }) => {
-    return user ? (
+    return (
         <div className="m-2 h-auto w-[95%] rounded-md bg-neutral-100 p-2 dark:bg-neutral-900">
-            <h1 className="text-5xl ml-7 font-semibold text-black dark:text-white mb-2">
+            <h1 className="mb-2 ml-7 text-5xl font-semibold text-black dark:text-white">
                 Stats for...
             </h1>
-            <div className="flex flex-row ml-7">
-                <Avatar className="w-28 h-28">
+            <div className="ml-7 flex flex-row">
+                <Avatar className="h-28 w-28">
                     {user.image ? (
                         <Image
                             src={user.image}
@@ -29,14 +29,14 @@ const UserInfoPanel: React.FC<UserInfoPanelProps> = ({ user }) => {
                         </AvatarFallback>
                     )}
                 </Avatar>
-                <div className="flex flex-col ml-7 justify-center text-black dark:text-white">
-                    <h1 className="text-4xl font-medium">{user.name}</h1>
+                <div className="ml-7 flex flex-col justify-center text-black dark:text-white">
+                    <h1 className="flex flex-row items-center text-4xl font-medium">
+                        {user.name}
+                    </h1>
                     <h3 className="text-2xl">{user.email}</h3>
                 </div>
             </div>
         </div>
-    ) : (
-        <div className="m-2 h-auto w-[95%] rounded-md bg-neutral-100 p-2 dark:bg-neutral-900"></div>
     );
 };
 
