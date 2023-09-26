@@ -3,19 +3,6 @@ import { subtle } from "crypto";
 import { NextAuthOptions, getServerSession } from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 
-const generateRandomString = (length: number) => {
-    let text = '';
-    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-    for (let i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-}
-
-//---------------------------------------------------------------------------
-
-
 export const authOptions: NextAuthOptions = {
     pages: {
         signIn: '/sign-in'
@@ -53,9 +40,35 @@ export const authOptions: NextAuthOptions = {
                 token.accessToken = account.access_token
                 token.tokenExpires = account.expires_at
                 token.refreshToken = account.refresh_token
-            }
 
-            return token
+                return token
+
+                //@ts-expect-error
+            } else if (Date.now() < token.tokenExpires * 1000) {
+                return token
+            } else {
+                try {
+                    const { data } = await axios.post(`https://accounts.spotify.com/api/token`, {
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            Authorization: 'Basic ' + (Buffer.from(process.env.SPOTIFY_CLIENT_ID + ':' + process.env.SPOTIFY_CLIENT_SECRET).toString('base64'))
+                        },
+                        body: {
+                            grant_type: "refresh_token",
+                            refresh_token: token.refreshToken
+                        },
+                        json: true
+                    })
+
+                    token.accessToken = data.access_token
+                    token.tokenExpires = Math.floor(Date.now() / 1000 + data.expires_in)
+
+                    return token
+                } catch (err) {
+                    console.error("Error refreshing access token", err)
+                    return { ...token, error: "RefreshAccessTokenError" as const }
+                }
+            }
         },
         redirect({ url, baseUrl }) {
             return '/'
