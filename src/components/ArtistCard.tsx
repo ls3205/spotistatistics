@@ -4,9 +4,10 @@ import React from "react";
 
 export interface ArtistCardProps {
     artist: Artist;
+    index: number;
 }
 
-const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
+const ArtistCard: React.FC<ArtistCardProps> = ({ artist, index }) => {
     return (
         <Link
             href={artist.external_urls.spotify}
@@ -20,7 +21,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
                 height={100}
                 className="object-cover w-[100px] h-[100px] rounded-md"
             />
-            <h1 className="text-black dark:text-white mt-3">{artist.name}</h1>
+            <h1 className="text-black dark:text-white mt-3">{index + 1}. {' '}{artist.name}</h1>
         </Link>
     );
 };

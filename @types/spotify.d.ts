@@ -31,3 +31,17 @@ interface SpotifyImage {
     height: number;
     width: number;
 }
+
+interface TopTracksDataReturn {
+    href: string;
+    items: Song[];
+    limit: number;
+    next: string;
+    offset: number;
+    previous: string;
+    total: number;
+}
+
+interface Song {
+
+}

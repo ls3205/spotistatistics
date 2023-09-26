@@ -5,21 +5,20 @@ import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { User } from "next-auth";
 import React from "react";
-import ArtistCard from "../ArtistCard";
-import Link from "next/link";
-import Image from "next/image";
 
-interface TopArtistsProps {
+interface TopSongsProps {
     user: Pick<User, "name" | "image" | "email" | "accessToken">;
-    dataRange?: 'short_term' | 'medium_term' | 'long_term'
+    dataRange?: "short_term" | "medium_term" | "long_term";
 }
 
-const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
+const TopSongs: React.FC<TopSongsProps> = ({ user, dataRange }) => {
     const { data, isLoading, error } = useQuery({
-        queryKey: ["GetTopArtists"],
+        queryKey: ["GetTopSongs"],
         queryFn: async () => {
             const { data } = await axios.get(
-                `https://api.spotify.com/v1/me/top/artists?limit=25&time_range=${dataRange ? dataRange : 'medium_term'}`,
+                `https://api.spotify.com/v1/me/top/tracks?limit=25&time_range=${
+                    dataRange ? dataRange : "medium_term"
+                }`,
                 {
                     headers: {
                         Authorization: `Bearer ${user.accessToken}`,
@@ -27,7 +26,7 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
                     },
                 },
             );
-            return data as TopArtistsDataReturn[];
+            return data as TopTracksDataReturn[];
         },
     });
 
@@ -47,16 +46,7 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
         );
     }
 
-    return (
-        <div className="m-2 flex h-auto w-[95%] flex-row rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 overflow-x-scroll">
-            {data &&
-                //@ts-ignore
-                data.items.map((artist, index) => {
-                    console.log(index)
-                    return <ArtistCard artist={artist} index={index} />;
-                })}
-        </div>
-    );
+    return <div>TopSongs</div>;
 };
 
-export default TopArtists;
+export default TopSongs;
