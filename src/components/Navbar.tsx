@@ -14,7 +14,7 @@ const Navbar: React.FC<NavbarProps> = async ({}) => {
     return session?.user ? (
         <>
             <div className="relative left-0 top-0 hidden w-full flex-row items-center justify-center md:flex">
-                <div className="mt-2 flex h-20 w-4/5 flex-row items-center rounded-md bg-neutral-100 dark:bg-neutral-900">
+                <div className="mt-2 flex h-14 w-4/5 flex-row items-center rounded-md bg-neutral-100 dark:bg-neutral-900">
                     <div className="relative mr-auto">
                         <p>spotistatistics</p>
                     </div>

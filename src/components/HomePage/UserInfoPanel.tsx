@@ -11,11 +11,11 @@ interface UserInfoPanelProps {
 const UserInfoPanel: React.FC<UserInfoPanelProps> = ({ user }) => {
     return (
         <div className="m-2 h-auto w-[95%] rounded-md bg-neutral-100 p-2 dark:bg-neutral-900">
-            <h1 className="mb-2 ml-7 text-5xl font-semibold text-black dark:text-white">
+            <h1 className="mb-2 ml-7 text-4xl font-semibold text-black dark:text-white">
                 Stats for...
             </h1>
             <div className="ml-7 flex flex-row">
-                <Avatar className="h-28 w-28">
+                <Avatar className="h-24 w-24">
                     {user.image ? (
                         <Image
                             src={user.image}
