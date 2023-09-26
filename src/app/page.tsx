@@ -1,4 +1,5 @@
 import TopArtists from "@/components/HomePage/TopArtists";
+import TopSongs from "@/components/HomePage/TopSongs";
 import UserInfoPanel from "@/components/HomePage/UserInfoPanel";
 import Navbar from "@/components/Navbar";
 import { getAuthSession } from "@/lib/auth";
@@ -12,6 +13,7 @@ export default async function Home() {
             <Navbar />
             <UserInfoPanel user={session.user} />
             <TopArtists user={session.user} />
+            <TopSongs user={session.user} />
         </main>
     ) : (
         redirect("/sign-in")

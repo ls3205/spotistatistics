@@ -5,6 +5,7 @@ import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { User } from "next-auth";
 import React from "react";
+import SongCard from "../SongCard";
 
 interface TopSongsProps {
     user: Pick<User, "name" | "image" | "email" | "accessToken">;
@@ -26,13 +27,13 @@ const TopSongs: React.FC<TopSongsProps> = ({ user, dataRange }) => {
                     },
                 },
             );
-            return data as TopTracksDataReturn[];
+            return data as TopTracksDataReturn;
         },
     });
 
     if (isLoading) {
         return (
-            <div className="m-2 flex h-auto w-[95%] items-center justify-center rounded-md bg-neutral-100 p-2 align-middle dark:bg-neutral-900">
+            <div className="m-2 flex h-44 w-[95%] items-center justify-center rounded-md bg-neutral-100 p-2 align-middle dark:bg-neutral-900">
                 <Loader2 className="animate-spin text-black dark:text-white" />
             </div>
         );
@@ -46,7 +47,14 @@ const TopSongs: React.FC<TopSongsProps> = ({ user, dataRange }) => {
         );
     }
 
-    return <div>TopSongs</div>;
+    return (
+        <div className="m-2 flex h-auto w-[95%] flex-row overflow-x-scroll rounded-md bg-neutral-100 p-2 dark:bg-neutral-900">
+            {data &&
+                data.items.map((song, index) => {
+                    return <SongCard song={song} index={index} />;
+                })}
+        </div>
+    );
 };
 
 export default TopSongs;

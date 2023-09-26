@@ -11,7 +11,7 @@ import Image from "next/image";
 
 interface TopArtistsProps {
     user: Pick<User, "name" | "image" | "email" | "accessToken">;
-    dataRange?: 'short_term' | 'medium_term' | 'long_term'
+    dataRange?: "short_term" | "medium_term" | "long_term";
 }
 
 const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
@@ -19,7 +19,9 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
         queryKey: ["GetTopArtists"],
         queryFn: async () => {
             const { data } = await axios.get(
-                `https://api.spotify.com/v1/me/top/artists?limit=25&time_range=${dataRange ? dataRange : 'medium_term'}`,
+                `https://api.spotify.com/v1/me/top/artists?limit=25&time_range=${
+                    dataRange ? dataRange : "medium_term"
+                }`,
                 {
                     headers: {
                         Authorization: `Bearer ${user.accessToken}`,
@@ -27,13 +29,13 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
                     },
                 },
             );
-            return data as TopArtistsDataReturn[];
+            return data as TopArtistsDataReturn;
         },
     });
 
     if (isLoading) {
         return (
-            <div className="m-2 flex h-auto w-[95%] items-center justify-center rounded-md bg-neutral-100 p-2 align-middle dark:bg-neutral-900">
+            <div className="m-2 flex h-44 w-[95%] items-center justify-center rounded-md bg-neutral-100 p-2 align-middle dark:bg-neutral-900">
                 <Loader2 className="animate-spin text-black dark:text-white" />
             </div>
         );
@@ -48,11 +50,9 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
     }
 
     return (
-        <div className="m-2 flex h-auto w-[95%] flex-row rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 overflow-x-scroll">
+        <div className="m-2 flex h-auto w-[95%] flex-row overflow-x-scroll rounded-md bg-neutral-100 p-2 dark:bg-neutral-900">
             {data &&
-                //@ts-ignore
                 data.items.map((artist, index) => {
-                    console.log(index)
                     return <ArtistCard artist={artist} index={index} />;
                 })}
         </div>
