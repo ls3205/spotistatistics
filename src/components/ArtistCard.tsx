@@ -2,42 +2,25 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export interface SpotifyImageArr {
-    url: string;
-    height: number;
-    width: number;
-}
-
 export interface ArtistCardProps {
-    artist: {
-        external_urls: {
-            spotify: string;
-        };
-        followers: {
-            href: string;
-            total: number;
-        };
-        genres: string[];
-        href: string;
-        id: string;
-        images: SpotifyImageArr[];
-        name: string;
-        popularity: number;
-        type: string;
-        uri: string;
-    };
+    artist: Artist;
 }
 
 const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
     return (
-        <Link href={artist.external_urls.spotify} className="flex h-auto w-auto flex-col justify-center">
+        <Link
+            href={artist.external_urls.spotify}
+            className="flex h-[150px] w-[150px] flex-col justify-center items-center aspect-square"
+            target="_blank"
+        >
             <Image
                 src={artist.images[1].url}
                 alt="artist-image"
-                width={artist.images[1].width}
-                height={artist.images[1].width}
+                width={100}
+                height={100}
+                className="object-cover w-[100px] h-[100px] rounded-md"
             />
-            <h1>{artist.name}</h1>
+            <h1 className="text-black dark:text-white mt-3">{artist.name}</h1>
         </Link>
     );
 };
