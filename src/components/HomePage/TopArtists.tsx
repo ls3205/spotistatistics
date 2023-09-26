@@ -11,14 +11,15 @@ import Image from "next/image";
 
 interface TopArtistsProps {
     user: Pick<User, "name" | "image" | "email" | "accessToken">;
+    dataRange?: 'short_term' | 'medium_term' | 'long_term'
 }
 
-const TopArtists: React.FC<TopArtistsProps> = ({ user }) => {
+const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
     const { data, isLoading, error } = useQuery({
         queryKey: ["GetTopArtists"],
         queryFn: async () => {
             const { data } = await axios.get(
-                "https://api.spotify.com/v1/me/top/artists",
+                `https://api.spotify.com/v1/me/top/artists?limit=25&time_range=${dataRange ? dataRange : 'medium_term'}`,
                 {
                     headers: {
                         Authorization: `Bearer ${user.accessToken}`,
