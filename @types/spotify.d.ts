@@ -91,3 +91,28 @@ interface Song {
     uri: string
     is_local: boolean
 }
+
+interface RecentlyPlayedTrack {
+    track: Song
+    played_at: string
+    context: {
+        type: string
+        href: string
+        external_urls: {
+            spotify: string
+        }
+        uri: string
+    }
+}
+
+interface RecentlyPlayedDataReturn {
+    href: string
+    limit: number
+    next: string
+    cursors: {
+        after: string
+        before: string
+    }
+    total: number
+    items: RecentlyPlayedTrack[]
+}

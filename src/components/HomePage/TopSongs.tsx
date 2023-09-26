@@ -17,7 +17,7 @@ const TopSongs: React.FC<TopSongsProps> = ({ user, dataRange }) => {
         queryKey: ["GetTopSongs"],
         queryFn: async () => {
             const { data } = await axios.get(
-                `https://api.spotify.com/v1/me/top/tracks?limit=25&time_range=${
+                `https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=${
                     dataRange ? dataRange : "medium_term"
                 }`,
                 {

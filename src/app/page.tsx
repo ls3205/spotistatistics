@@ -1,3 +1,4 @@
+import RecentlyPlayed from "@/components/HomePage/RecentlyPlayed";
 import TopArtists from "@/components/HomePage/TopArtists";
 import TopSongs from "@/components/HomePage/TopSongs";
 import UserInfoPanel from "@/components/HomePage/UserInfoPanel";
@@ -14,6 +15,7 @@ export default async function Home() {
             <UserInfoPanel user={session.user} />
             <TopArtists user={session.user} />
             <TopSongs user={session.user} />
+            <RecentlyPlayed user={session.user} />
         </main>
     ) : (
         redirect("/sign-in")
