@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -30,7 +30,7 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ user }) => {
 
     if (isLoading) {
         return (
-            <div className="m-2 flex h-44 w-[95%] items-center justify-center rounded-md bg-neutral-100 p-2 align-middle dark:bg-neutral-900">
+            <div className="m-2 flex h-44 w-full items-center justify-center rounded-md bg-neutral-100 p-2 align-middle dark:bg-neutral-900 2xl:m-0 2xl:mx-1">
                 <Loader2 className="animate-spin text-black dark:text-white" />
             </div>
         );
@@ -38,14 +38,14 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ user }) => {
 
     if (error) {
         return (
-            <div className="m-2 h-auto w-[95%] rounded-md bg-neutral-100 p-2 dark:bg-neutral-900">
+            <div className="m-2 h-auto w-full rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1">
                 <h1 className="text-black dark:text-white">something broke</h1>
             </div>
         );
     }
 
     return (
-        <div className="m-2 flex h-auto w-[95%] flex-row overflow-x-scroll rounded-md bg-neutral-100 p-2 dark:bg-neutral-900">
+        <div className="m-2 flex h-auto w-full flex-row overflow-x-auto rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:mr-0 2xl:w-1/3 2xl:flex-col">
             {data &&
                 data.items.map((song, index) => {
                     return <SongCard song={song.track} index={index} />;

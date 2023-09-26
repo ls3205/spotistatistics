@@ -13,9 +13,11 @@ export default async function Home() {
         <main className="flex min-h-screen flex-col items-center bg-white text-white subpixel-antialiased dark:bg-black dark:text-black">
             <Navbar />
             <UserInfoPanel user={session.user} />
-            <TopArtists user={session.user} />
-            <TopSongs user={session.user} />
-            <RecentlyPlayed user={session.user} />
+            <div className="w-[95%] mx-2 h-full flex flex-col 2xl:flex-row 2xl:mb-2">
+                <TopArtists user={session.user} />
+                <TopSongs user={session.user} />
+                <RecentlyPlayed user={session.user} />
+            </div>
         </main>
     ) : (
         redirect("/sign-in")
