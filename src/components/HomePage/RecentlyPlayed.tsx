@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { User } from "next-auth";
 import React from "react";
 import SongCard from "../SongCard";
+import RecentlyPlayedSongCard from "../RecentlyPlayedSongCard";
 
 interface RecentlyPlayedProps {
     user: Pick<User, "name" | "image" | "email" | "accessToken">;
@@ -49,10 +50,10 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ user }) => {
             <h1 className="ml-[15%] w-[70%] border-b-[1px] border-neutral-500 p-2 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white 2xl:mb-2">
                 Recently Played
             </h1>
-            <div className="flex flex-row overflow-x-auto 2xl:flex-col">
+            <div className="flex overflow-y-auto flex-col">
                 {data &&
                     data.items.map((song, index) => {
-                        return <SongCard song={song.track} index={index} played_at={song.played_at} />;
+                        return <RecentlyPlayedSongCard song={song.track} index={index} played_at={song.played_at} />;
                     })}
             </div>
         </div>

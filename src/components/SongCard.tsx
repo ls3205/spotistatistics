@@ -50,9 +50,17 @@ const SongCard: React.FC<SongCardProps> = ({ song, index, played_at }) => {
             </div>
 
             {played_at && (
-                <div className="relative ml-auto hidden h-full w-auto flex-col justify-center text-neutral-500 dark:text-neutral-400 2xl:flex">
+                <div className="relative ml-auto mr-4 hidden h-full w-auto flex-col items-center text-neutral-500 dark:text-neutral-400 2xl:flex">
                     <HistoryIcon />
-                    {(Date.now() - new Date(played_at).getTime()) < 3600000 ? Math.round(((Date.now() - new Date(played_at).getTime()) / 60000)) + ' m' : Math.round(((Date.now() - new Date(played_at).getTime()) / 3600000)) + ' h' }
+                    {Date.now() - new Date(played_at).getTime() < 3600000
+                        ? Math.round(
+                              (Date.now() - new Date(played_at).getTime()) /
+                                  60000,
+                          ) + " m"
+                        : Math.round(
+                              (Date.now() - new Date(played_at).getTime()) /
+                                  3600000,
+                          ) + " h"}
                 </div>
             )}
         </Link>
