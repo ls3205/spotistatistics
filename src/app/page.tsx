@@ -13,7 +13,7 @@ export default async function Home() {
     const session = await getAuthSession();
 
     return session && session.user ? (
-        <main className="flex min-h-screen flex-col items-center bg-white text-white subpixel-antialiased dark:bg-black dark:text-black">
+        <main className="flex min-h-screen flex-col items-center bg-white pb-10 text-white subpixel-antialiased dark:bg-black dark:text-black">
             <Navbar />
             <UserInfoPanel user={session.user} />
             <HomePageData user={session.user} />

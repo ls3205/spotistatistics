@@ -30,12 +30,12 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
                 },
             );
             return data as TopArtistsDataReturn;
-        }
+        },
     });
 
     useEffect(() => {
         refetch();
-    }, [dataRange])
+    }, [dataRange]);
 
     if (isLoading) {
         return (
@@ -54,11 +54,16 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
     }
 
     return (
-        <div className="my-2 flex h-min w-full flex-row overflow-x-auto rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:ml-0 2xl:w-1/3 2xl:flex-col">
-            {data &&
-                data.items.map((artist, index) => {
-                    return <ArtistCard artist={artist} index={index} />;
-                })}
+        <div className="my-2 flex h-min w-full flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:ml-0 2xl:w-1/3">
+            <h1 className="w-[70%] ml-[15%] border-b-[1px] border-neutral-500 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white">
+                Top Artists
+            </h1>
+            <div className="flex flex-row overflow-x-auto 2xl:flex-col">
+                {data &&
+                    data.items.map((artist, index) => {
+                        return <ArtistCard artist={artist} index={index} />;
+                    })}
+            </div>
         </div>
     );
 };
