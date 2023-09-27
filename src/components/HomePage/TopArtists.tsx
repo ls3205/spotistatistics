@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { User } from "next-auth";
-import React from "react";
+import React, { useEffect } from "react";
 import ArtistCard from "../ArtistCard";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,7 +15,7 @@ interface TopArtistsProps {
 }
 
 const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
-    const { data, isLoading, error } = useQuery({
+    const { data, isLoading, error, refetch } = useQuery({
         queryKey: ["GetTopArtists"],
         queryFn: async () => {
             const { data } = await axios.get(
@@ -30,8 +30,12 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
                 },
             );
             return data as TopArtistsDataReturn;
-        },
+        }
     });
+
+    useEffect(() => {
+        refetch();
+    }, [dataRange])
 
     if (isLoading) {
         return (
@@ -50,7 +54,7 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
     }
 
     return (
-        <div className="m-2 flex h-min w-full flex-row overflow-x-auto rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:ml-0 2xl:w-1/3 2xl:flex-col">
+        <div className="my-2 flex h-min w-full flex-row overflow-x-auto rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:ml-0 2xl:w-1/3 2xl:flex-col">
             {data &&
                 data.items.map((artist, index) => {
                     return <ArtistCard artist={artist} index={index} />;

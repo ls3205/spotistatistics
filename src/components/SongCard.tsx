@@ -37,7 +37,10 @@ const SongCard: React.FC<SongCardProps> = ({ song, index }) => {
 
             <div className="hidden flex-col 2xl:flex">
                 <h1 className="text-black dark:text-white">
-                    {index + 1}. {song.name}
+                    {index + 1}.{" "}
+                    {song.name.length <= 40
+                        ? song.name
+                        : song.name.slice(0, 40) + "..."}
                 </h1>
                 <h3 className="text-xs text-neutral-500 dark:text-neutral-400">
                     {song.artists[0].name}

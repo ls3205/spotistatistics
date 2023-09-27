@@ -1,10 +1,10 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { User } from "next-auth";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SongCard from "../SongCard";
 
 interface TopSongsProps {
@@ -13,7 +13,7 @@ interface TopSongsProps {
 }
 
 const TopSongs: React.FC<TopSongsProps> = ({ user, dataRange }) => {
-    const { data, isLoading, error } = useQuery({
+    const { data, isLoading, error, refetch } = useQuery({
         queryKey: ["GetTopSongs"],
         queryFn: async () => {
             const { data } = await axios.get(
@@ -30,6 +30,10 @@ const TopSongs: React.FC<TopSongsProps> = ({ user, dataRange }) => {
             return data as TopTracksDataReturn;
         },
     });
+
+    useEffect(() => {
+        refetch();
+    }, [dataRange]);
 
     if (isLoading) {
         return (
@@ -48,12 +52,13 @@ const TopSongs: React.FC<TopSongsProps> = ({ user, dataRange }) => {
     }
 
     return (
-        <div className="m-2 flex h-auto w-full flex-row overflow-x-auto rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:w-1/3 2xl:flex-col">
-            {data &&
-                data.items.map((song, index) => {
+        data && (
+            <div className="my-2 flex h-auto w-full flex-row overflow-x-auto rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:w-1/3 2xl:flex-col">
+                {data.items.map((song, index) => {
                     return <SongCard song={song} index={index} />;
                 })}
-        </div>
+            </div>
+        )
     );
 };
 
