@@ -116,3 +116,25 @@ interface RecentlyPlayedDataReturn {
     total: number
     items: RecentlyPlayedTrack[]
 }
+
+interface UserProfileReturnData {
+    country: string
+    display_name: string
+    explicit_content: {
+        filter_enabled: false
+        filter_locked: false
+    }
+    external_urls: {
+        spotify: string
+    }
+    followers: {
+        href: string
+        total: number
+    }
+    href: string
+    id: string
+    images: SpotifyImage[]
+    product: string
+    type: string
+    uri: string
+}
