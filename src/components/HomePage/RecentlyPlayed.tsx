@@ -45,11 +45,16 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ user }) => {
     }
 
     return (
-        <div className="my-2 flex h-auto w-full flex-row overflow-x-auto rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:mr-0 2xl:w-1/3 2xl:flex-col">
-            {data &&
-                data.items.map((song, index) => {
-                    return <SongCard song={song.track} index={index} />;
-                })}
+        <div className="my-2 flex h-min w-full flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:mr-0 2xl:w-1/3">
+            <h1 className="ml-[15%] w-[70%] border-b-[1px] border-neutral-500 p-2 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white 2xl:mb-2">
+                Recently Played
+            </h1>
+            <div className="flex flex-row overflow-x-auto 2xl:flex-col">
+                {data &&
+                    data.items.map((song, index) => {
+                        return <SongCard song={song.track} index={index} />;
+                    })}
+            </div>
         </div>
     );
 };
