@@ -52,7 +52,7 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ user }) => {
             <div className="flex flex-row overflow-x-auto 2xl:flex-col">
                 {data &&
                     data.items.map((song, index) => {
-                        return <SongCard song={song.track} index={index} />;
+                        return <SongCard song={song.track} index={index} played_at={song.played_at} />;
                     })}
             </div>
         </div>

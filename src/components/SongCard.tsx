@@ -1,3 +1,4 @@
+import { HistoryIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -5,9 +6,10 @@ import React from "react";
 interface SongCardProps {
     song: Song;
     index: number;
+    played_at?: string;
 }
 
-const SongCard: React.FC<SongCardProps> = ({ song, index }) => {
+const SongCard: React.FC<SongCardProps> = ({ song, index, played_at }) => {
     return (
         <Link
             href={song.external_urls.spotify}
@@ -46,6 +48,13 @@ const SongCard: React.FC<SongCardProps> = ({ song, index }) => {
                     {song.artists[0].name}
                 </h3>
             </div>
+
+            {played_at && (
+                <div className="relative ml-auto hidden h-full w-auto flex-col justify-center text-neutral-500 dark:text-neutral-400 2xl:flex">
+                    <HistoryIcon />
+                    {(Date.now() - new Date(played_at).getTime()) < 3600000 ? Math.round(((Date.now() - new Date(played_at).getTime()) / 60000)) + ' m' : Math.round(((Date.now() - new Date(played_at).getTime()) / 3600000)) + ' h' }
+                </div>
+            )}
         </Link>
     );
 };
