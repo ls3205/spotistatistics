@@ -30,12 +30,12 @@ const UserInfoPanel: React.FC<UserInfoPanelProps> = ({ user }) => {
 
     return (
         data && (
-            <div className="m-2 h-auto w-[95%] flex-row rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 md:flex md:items-center">
-                <h1 className="mb-2 ml-7 text-4xl font-semibold text-black dark:text-white">
+            <div className="m-2 mb-0 h-auto w-[95%] flex-row rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 md:flex md:items-center">
+                <h1 className="mb-2 ml-7 text-2xl font-semibold text-black dark:text-white md:mb-0">
                     Stats for
                 </h1>
                 <div className="ml-7 flex flex-row">
-                    <Avatar className="h-24 w-24">
+                    <Avatar className="h-16 w-16 ">
                         {user.image ? (
                             <Image
                                 src={user.image}
@@ -52,11 +52,11 @@ const UserInfoPanel: React.FC<UserInfoPanelProps> = ({ user }) => {
                     <div className="ml-7 flex flex-col justify-center text-black dark:text-white">
                         <Link
                             href={data.external_urls.spotify}
-                            className="flex w-min flex-row items-center text-4xl font-medium text-green-500"
+                            className="flex w-min flex-row items-center text-2xl font-medium text-green-500 "
                         >
                             {user.name}
                         </Link>
-                        <h3 className="text-xl text-neutral-500 dark:text-neutral-400">
+                        <h3 className="text-base text-neutral-500 dark:text-neutral-400">
                             {user.email}
                         </h3>
                     </div>
