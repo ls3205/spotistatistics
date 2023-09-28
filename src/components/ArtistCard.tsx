@@ -21,7 +21,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist, index }) => {
                 height={100}
                 className="h-[100px] w-[100px] rounded-md object-cover 2xl:mr-2 2xl:h-[50px] 2xl:w-[50px]"
             />
-            <h1 className="mt-3 text-black dark:text-white 2xl:mt-0 2xl:text-2xl">
+            <h1 className="mt-3 text-black dark:text-white 2xl:mt-0">
                 {index + 1}. {artist.name}
             </h1>
         </Link>
