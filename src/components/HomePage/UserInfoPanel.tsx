@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback } from "../ui/Avatar";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import CurrentPlayerInfo from "../CurrentPlayerInfo";
 
 interface UserInfoPanelProps {
     user: Pick<User, "name" | "image" | "email" | "sub" | "accessToken">;
@@ -61,6 +62,7 @@ const UserInfoPanel: React.FC<UserInfoPanelProps> = ({ user }) => {
                         </h3>
                     </div>
                 </div>
+                <CurrentPlayerInfo user={user} />
             </div>
         )
     );

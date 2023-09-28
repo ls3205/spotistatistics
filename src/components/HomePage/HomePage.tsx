@@ -1,8 +1,8 @@
 "use client"
 
 import { User } from "next-auth";
-import React, { useEffect, useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/Tabs";
+import React, { useState } from "react";
+import { Tabs, TabsList, TabsTrigger } from "../ui/Tabs";
 import TopArtists from "./TopArtists";
 import TopSongs from "./TopSongs";
 import RecentlyPlayed from "./RecentlyPlayed";
@@ -13,10 +13,6 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = ({ user }) => {
     const [dataRange, setDataRange] = useState<'short_term' | 'medium_term' | 'long_term'>("short_term");
-
-    useEffect(() => {
-        console.log(dataRange)
-    }, [dataRange])
 
     return (
         <>
