@@ -23,21 +23,21 @@ const HomePage: React.FC<HomePageProps> = ({ user }) => {
                 <TabsList className="fixed bottom-0 left-0 w-full rounded-b-none bg-neutral-100 dark:bg-neutral-900">
                     <TabsTrigger
                         value="short_term"
-                        className="rounded-md hover:bg-neutral-200 data-[state=active]:text-green-500 dark:hover:bg-neutral-800 dark:data-[state=active]:text-green-500"
+                        className="rounded-md hover:bg-neutral-200 data-[state=active]:text-green-400 dark:hover:bg-neutral-800 dark:data-[state=active]:text-green-400"
                         onClick={() => setDataRange('short_term')}
                     >
                         4 Weeks
                     </TabsTrigger>
                     <TabsTrigger
                         value="medium_term"
-                        className="rounded-md hover:bg-neutral-200 data-[state=active]:text-green-500 dark:hover:bg-neutral-800 dark:data-[state=active]:text-green-500"
+                        className="rounded-md hover:bg-neutral-200 data-[state=active]:text-green-400 dark:hover:bg-neutral-800 dark:data-[state=active]:text-green-400"
                         onClick={() => setDataRange('medium_term')}
                     >
                         6 Months
                     </TabsTrigger>
                     <TabsTrigger
                         value="long_term"
-                        className="rounded-md hover:bg-neutral-200 data-[state=active]:text-green-500 dark:hover:bg-neutral-800 dark:data-[state=active]:text-green-500"
+                        className="rounded-md hover:bg-neutral-200 data-[state=active]:text-green-400 dark:hover:bg-neutral-800 dark:data-[state=active]:text-green-400"
                         onClick={() => setDataRange('long_term')}
                     >
                         Lifetime

@@ -69,19 +69,19 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
                 <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
                     <DropdownMenuRadioItem
                         value="light"
-                        className="focus:bg-green-500 dark:focus:bg-green-500"
+                        className="focus:bg-green-400 dark:focus:bg-green-400"
                     >
                         Light
                     </DropdownMenuRadioItem>
                     <DropdownMenuRadioItem
                         value="dark"
-                        className="focus:bg-green-500 dark:focus:bg-green-500"
+                        className="focus:bg-green-400 dark:focus:bg-green-400"
                     >
                         Dark
                     </DropdownMenuRadioItem>
                     <DropdownMenuRadioItem
                         value="system"
-                        className="focus:bg-green-500 dark:focus:bg-green-500"
+                        className="focus:bg-green-400 dark:focus:bg-green-400"
                     >
                         System
                     </DropdownMenuRadioItem>

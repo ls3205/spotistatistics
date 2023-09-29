@@ -90,6 +90,7 @@ interface Song {
     type: string
     uri: string
     is_local: boolean
+    duration_ms: number
 }
 
 interface RecentlyPlayedTrack {
