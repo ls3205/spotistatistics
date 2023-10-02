@@ -31,7 +31,7 @@ const UserInfoPanel: React.FC<UserInfoPanelProps> = ({ user }) => {
 
     return (
         data && (
-            <div className="m-2 mb-0 h-auto w-[95%] flex-row rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 md:flex md:items-center">
+            <div className="m-1 h-auto w-[95%] flex-row rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 md:mt-2 md:flex md:items-center">
                 <h1 className="mb-2 ml-7 text-2xl font-semibold text-black dark:text-white md:mb-0">
                     Stats for
                 </h1>
