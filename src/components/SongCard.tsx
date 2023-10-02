@@ -6,29 +6,28 @@ import React from "react";
 interface SongCardProps {
     song: Song;
     index: number;
-    played_at?: string;
 }
 
-const SongCard: React.FC<SongCardProps> = ({ song, index, played_at }) => {
+const SongCard: React.FC<SongCardProps> = ({ song, index }) => {
     return (
         <Link
             href={song.external_urls.spotify}
-            className="flex aspect-square h-[150px] w-[150px] flex-col items-center justify-center rounded-md py-2 transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 2xl:aspect-auto 2xl:h-min 2xl:w-full 2xl:flex-row 2xl:justify-start 2xl:pl-4 2xl:font-semibold"
+            className="flex aspect-square h-[150px] w-[125px] flex-col items-center justify-center rounded-md py-2 transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 2xl:aspect-auto 2xl:h-min 2xl:w-full 2xl:flex-row 2xl:justify-start 2xl:pl-4 2xl:font-semibold"
             target="_blank"
         >
             <Image
                 src={song.album.images[1].url}
                 alt="artist-image"
-                width={100}
-                height={100}
-                className="h-[100px] w-[100px] rounded-md object-cover 2xl:mr-2 2xl:h-[50px] 2xl:w-[50px]"
+                width={150}
+                height={150}
+                className="h-[75px] w-[75px] rounded-md object-cover 2xl:mr-2 2xl:h-[50px] 2xl:w-[50px]"
             />
             <div className="flex flex-col items-center 2xl:hidden">
                 <h1 className="mt-3 text-black dark:text-white 2xl:mt-0">
                     {index + 1}.{" "}
-                    {song.name.length <= 13
+                    {song.name.length <= 12
                         ? song.name
-                        : song.name.slice(0, 10) + "..."}
+                        : song.name.slice(0, 9) + "..."}
                 </h1>
                 <h3 className="text-xs text-neutral-500 dark:text-neutral-400 2xl:text-base">
                     {song.artists[0].name.length <= 20
@@ -48,21 +47,6 @@ const SongCard: React.FC<SongCardProps> = ({ song, index, played_at }) => {
                     {song.artists[0].name}
                 </h3>
             </div>
-
-            {played_at && (
-                <div className="relative ml-auto mr-4 hidden h-full w-auto flex-col items-center text-neutral-500 dark:text-neutral-400 2xl:flex">
-                    <HistoryIcon />
-                    {Date.now() - new Date(played_at).getTime() < 3600000
-                        ? Math.round(
-                              (Date.now() - new Date(played_at).getTime()) /
-                                  60000,
-                          ) + " m"
-                        : Math.round(
-                              (Date.now() - new Date(played_at).getTime()) /
-                                  3600000,
-                          ) + " h"}
-                </div>
-            )}
         </Link>
     );
 };
