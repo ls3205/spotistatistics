@@ -48,12 +48,14 @@ export const authOptions: NextAuthOptions = {
                 return token
             } else {
                 try {
-                    const { data } = await axios.post(`https://accounts.spotify.com/api/token?grant_type=refresh_token&refresh_token=${token.refreshToken}`, {
+                    const { data } = await axios.post(`https://accounts.spotify.com/api/token`, {
+                        grant_type: 'refresh_token',
+                        refresh_token: token.refreshToken
+                    }, {
                         headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                            Authorization: 'Basic ' + (Buffer.from(process.env.SPOTIFY_CLIENT_ID + ':' + process.env.SPOTIFY_CLIENT_SECRET).toString('base64'))
+                            Authorization: 'Basic ' + (Buffer.from(process.env.SPOTIFY_CLIENT_ID + ':' + process.env.SPOTIFY_CLIENT_SECRET).toString('base64')),
+                            'Content-Type': "application/x-www-form-urlencoded",
                         },
-                        json: true
                     })
 
                     token.accessToken = data.access_token
