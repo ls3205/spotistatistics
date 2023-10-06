@@ -6,7 +6,7 @@ import React from "react";
 export interface ArtistCardProps {
     artist: Artist;
     index: number;
-    mobileAccessible: boolean | true;
+    mobileAccessible?: boolean | true;
 }
 
 const ArtistCard: React.FC<ArtistCardProps> = ({
@@ -35,15 +35,8 @@ const ArtistCard: React.FC<ArtistCardProps> = ({
                         : "mr-2 h-[50px] w-[50px] rounded-md object-cover",
                 )}
             />
-            <h1 className="mt-3 hidden text-black dark:text-white 2xl:mt-0 2xl:block">
+            <h1 className="mt-3 overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white 2xl:mt-0">
                 {index + 1}. {artist.name}
-            </h1>
-
-            <h1 className="mt-3 text-black dark:text-white 2xl:hidden">
-                {index + 1}.{" "}
-                {artist.name.length <= 12
-                    ? artist.name
-                    : artist.name.slice(0, 9) + "..."}
             </h1>
         </Link>
     );

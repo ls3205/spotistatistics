@@ -29,12 +29,10 @@ const RecentlyPlayedSongCard: React.FC<RecentlyPlayedSongCardProps> = ({
             />
 
             <div className="flex flex-col">
-                <h1 className="text-black dark:text-white">
-                    {song.name.length <= 40
-                        ? song.name
-                        : song.name.slice(0, 40) + "..."}
+                <h1 className="overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white">
+                    {song.name}
                 </h1>
-                <h3 className="text-xs text-neutral-500 dark:text-neutral-400">
+                <h3 className="overflow-hidden text-ellipsis whitespace-nowrap text-xs text-neutral-500 dark:text-neutral-400">
                     {song.artists[0].name}
                 </h3>
             </div>

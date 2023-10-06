@@ -88,7 +88,7 @@ const TopArtists: React.FC<TopArtistsProps> = ({
             >
                 {data &&
                     data.items.map((artist, index) => {
-                        return <ArtistCard artist={artist} index={index} />;
+                        return <ArtistCard artist={artist} index={index} mobileAccessible={false} />;
                     })}
             </div>
         </div>
