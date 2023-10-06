@@ -5,7 +5,7 @@ import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { User } from "next-auth";
 import React, { useEffect, useState } from "react";
-import SongCard from "../SongCard";
+import SongCard from "./SongCard";
 
 interface TopSongsProps {
     user: Pick<User, "name" | "image" | "email" | "accessToken">;

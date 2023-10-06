@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { HistoryIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,13 +7,22 @@ import React from "react";
 interface SongCardProps {
     song: Song;
     index: number;
+    mobileAccessible: boolean | true;
 }
 
-const SongCard: React.FC<SongCardProps> = ({ song, index }) => {
+const SongCard: React.FC<SongCardProps> = ({
+    song,
+    index,
+    mobileAccessible = true,
+}) => {
     return (
         <Link
             href={song.external_urls.spotify}
-            className="flex aspect-square h-[150px] w-[125px] flex-col items-center justify-center rounded-md py-2 transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 2xl:aspect-auto 2xl:h-min 2xl:w-full 2xl:flex-row 2xl:justify-start 2xl:pl-4 2xl:font-semibold"
+            className={cn(
+                mobileAccessible
+                    ? "flex aspect-square h-[150px] w-[125px] flex-col items-center justify-center rounded-md py-2 transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 2xl:aspect-auto 2xl:h-min 2xl:w-full 2xl:flex-row 2xl:justify-start 2xl:pl-4 2xl:font-semibold"
+                    : "flex aspect-auto h-min w-full flex-row items-center justify-start rounded-md py-2 pl-4 font-semibold transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800",
+            )}
             target="_blank"
         >
             <Image

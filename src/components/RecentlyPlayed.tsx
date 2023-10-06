@@ -4,24 +4,20 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { User } from "next-auth";
-import React, { useEffect } from "react";
-import ArtistCard from "../ArtistCard";
-import Link from "next/link";
-import Image from "next/image";
+import React from "react";
+import SongCard from "./SongCard";
+import RecentlyPlayedSongCard from "./RecentlyPlayedSongCard";
 
-interface TopArtistsProps {
+interface RecentlyPlayedProps {
     user: Pick<User, "name" | "image" | "email" | "accessToken">;
-    dataRange?: "short_term" | "medium_term" | "long_term";
 }
 
-const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
-    const { data, isLoading, error, refetch } = useQuery({
-        queryKey: ["GetTopArtists"],
+const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ user }) => {
+    const { data, isLoading, error } = useQuery({
+        queryKey: ["GetRecentlyPlayed"],
         queryFn: async () => {
             const { data } = await axios.get(
-                `https://api.spotify.com/v1/me/top/artists?limit=10&time_range=${
-                    dataRange ? dataRange : "medium_term"
-                }`,
+                `https://api.spotify.com/v1/me/player/recently-played?limit=10`,
                 {
                     headers: {
                         Authorization: `Bearer ${user.accessToken}`,
@@ -29,13 +25,9 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
                     },
                 },
             );
-            return data as TopArtistsDataReturn;
+            return data as RecentlyPlayedDataReturn;
         },
     });
-
-    useEffect(() => {
-        refetch();
-    }, [dataRange]);
 
     if (isLoading) {
         return (
@@ -54,18 +46,18 @@ const TopArtists: React.FC<TopArtistsProps> = ({ user, dataRange }) => {
     }
 
     return (
-        <div className="my-1 flex h-min w-full flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:ml-0 2xl:w-1/3">
+        <div className="my-1 flex h-min w-full flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:mr-0 2xl:w-1/3">
             <h1 className="ml-[15%] w-[70%] border-b-[1px] border-neutral-500 p-2 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white 2xl:mb-2">
-                Top Artists
+                Recently Played
             </h1>
-            <div className="flex flex-row overflow-x-auto 2xl:flex-col">
+            <div className="flex overflow-y-auto flex-col">
                 {data &&
-                    data.items.map((artist, index) => {
-                        return <ArtistCard artist={artist} index={index} />;
+                    data.items.map((song, index) => {
+                        return <RecentlyPlayedSongCard song={song.track} index={index} played_at={song.played_at} />;
                     })}
             </div>
         </div>
     );
 };
 
-export default TopArtists;
+export default RecentlyPlayed;
