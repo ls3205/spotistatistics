@@ -7,7 +7,7 @@ import React from "react";
 interface SongCardProps {
     song: Song;
     index: number;
-    mobileAccessible: boolean | true;
+    mobileAccessible?: boolean | true;
 }
 
 const SongCard: React.FC<SongCardProps> = ({
@@ -30,13 +30,35 @@ const SongCard: React.FC<SongCardProps> = ({
                 alt="artist-image"
                 width={150}
                 height={150}
-                className="h-[75px] w-[75px] rounded-md object-cover 2xl:mr-2 2xl:h-[50px] 2xl:w-[50px]"
+                className={cn(
+                    "rounded-md object-cover",
+                    mobileAccessible
+                        ? "h-[75px] w-[75px] 2xl:mr-2 2xl:h-[50px] 2xl:w-[50px]"
+                        : "mr-2 h-[50px] w-[50px]",
+                )}
             />
-            <div className="flex flex-col items-center 2xl:hidden">
-                <h1 className="mt-3 overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white 2xl:mt-0">
+            <div
+                className={cn(
+                    "flex flex-col",
+                    mobileAccessible
+                        ? "items-center 2xl:items-start"
+                        : "items-start",
+                )}
+            >
+                <h1
+                    className={cn(
+                        "overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white",
+                        mobileAccessible ? "mt-3 2xl:mt-0" : "mt-0",
+                    )}
+                >
                     {index + 1}. {song.name}
                 </h1>
-                <h3 className="overflow-hidden text-ellipsis whitespace-nowrap text-xs text-neutral-500 dark:text-neutral-400 2xl:text-base">
+                <h3
+                    className={cn(
+                        "overflow-hidden text-ellipsis whitespace-nowrap text-neutral-500 dark:text-neutral-400",
+                        mobileAccessible ? "text-xs" : "text-base",
+                    )}
+                >
                     {song.artists[0].name}
                 </h3>
             </div>

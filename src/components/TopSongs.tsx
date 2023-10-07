@@ -6,20 +6,28 @@ import { Loader2 } from "lucide-react";
 import { User } from "next-auth";
 import React, { useEffect, useState } from "react";
 import SongCard from "./SongCard";
+import { cn } from "@/lib/utils";
 
 interface TopSongsProps {
     user: Pick<User, "name" | "image" | "email" | "accessToken">;
     dataRange?: "short_term" | "medium_term" | "long_term";
+    mobileAccessible?: boolean | true;
+    className?: string;
+    dataLength?: number | 10;
 }
 
-const TopSongs: React.FC<TopSongsProps> = ({ user, dataRange }) => {
+const TopSongs: React.FC<TopSongsProps> = ({
+    user,
+    dataRange = "medium_term",
+    mobileAccessible = true,
+    className,
+    dataLength = 10,
+}) => {
     const { data, isLoading, error, refetch } = useQuery({
         queryKey: ["GetTopSongs"],
         queryFn: async () => {
             const { data } = await axios.get(
-                `https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=${
-                    dataRange ? dataRange : "medium_term"
-                }`,
+                `https://api.spotify.com/v1/me/top/tracks?limit=${dataLength}&time_range=${dataRange}`,
                 {
                     headers: {
                         Authorization: `Bearer ${user.accessToken}`,
@@ -53,13 +61,32 @@ const TopSongs: React.FC<TopSongsProps> = ({ user, dataRange }) => {
 
     return (
         data && (
-            <div className="my-1 flex h-min w-full flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:w-1/3">
+            <div
+                className={cn(
+                    "flex h-min flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900",
+                    mobileAccessible
+                        ? "my-1 w-full p-2 2xl:m-0 2xl:mx-1 2xl:w-1/3"
+                        : "m-0 mx-1 w-1/3",
+                    className,
+                )}
+            >
                 <h1 className="ml-[15%] w-[70%] border-b-[1px] border-neutral-500 p-2 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white 2xl:mb-2">
                     Top Songs
                 </h1>
-                <div className="flex flex-row overflow-x-auto 2xl:flex-col">
+                <div
+                    className={cn(
+                        "flex overflow-x-hidden",
+                        mobileAccessible ? "flex-row 2xl:flex-col" : "flex-col",
+                    )}
+                >
                     {data.items.map((song, index) => {
-                        return <SongCard song={song} index={index} />;
+                        return (
+                            <SongCard
+                                song={song}
+                                index={index}
+                                mobileAccessible={mobileAccessible}
+                            />
+                        );
                     })}
                 </div>
             </div>
