@@ -14,19 +14,27 @@ const ArtistCard: React.FC<ArtistCardProps> = ({
     index,
     mobileAccessible = true,
 }) => {
-    console.log(mobileAccessible)
-
     return (
         <Link
             href={artist.external_urls.spotify}
             className={cn(
                 "flex rounded-md py-2 transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 ",
                 mobileAccessible
-                    ? "aspect-square h-[150px] w-[125px] flex-col items-center justify-center 2xl:aspect-auto 2xl:h-min 2xl:w-full 2xl:flex-row 2xl:justify-start 2xl:pl-4 2xl:font-semibold"
+                    ? "aspect-square h-[175px] w-[150px] flex-col items-center justify-center 2xl:aspect-auto 2xl:h-min 2xl:w-full 2xl:flex-row 2xl:justify-start 2xl:pl-4 2xl:font-semibold"
                     : "aspect-auto h-min w-full flex-row items-center justify-start pl-4 font-semibold",
             )}
             target="_blank"
         >
+            <h1
+                className={cn(
+                    "w-8 text-2xl font-medium text-neutral-500 dark:text-neutral-400",
+                    mobileAccessible
+                        ? "text-center 2xl:mr-4 2xl:text-right"
+                        : "mr-4 text-right",
+                )}
+            >
+                {index + 1}
+            </h1>
             <Image
                 src={artist.images[1].url}
                 alt="artist-image"
@@ -45,7 +53,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({
                     mobileAccessible ? "mt-3 2xl:mt-0" : "mt-0",
                 )}
             >
-                {index + 1}. {artist.name}
+                {artist.name}
             </h1>
         </Link>
     );

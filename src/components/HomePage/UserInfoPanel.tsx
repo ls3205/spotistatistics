@@ -53,7 +53,7 @@ const UserInfoPanel: React.FC<UserInfoPanelProps> = ({ user }) => {
                     <div className="ml-7 flex flex-col justify-center text-black dark:text-white">
                         <Link
                             href={data.external_urls.spotify}
-                            className="flex w-min flex-row items-center text-2xl font-medium text-green-400 "
+                            className="flex w-min flex-row items-center text-2xl font-medium text-green-500 "
                         >
                             {user.name}
                         </Link>

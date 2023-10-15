@@ -31,14 +31,14 @@ const CurrentPlayerInfo: React.FC<CurrentPlayerInfoProps> = ({ user }) => {
     });
 
     if (isLoading) {
-        <div className="relative m-2 ml-auto flex flex-col items-center rounded-md bg-green-400 p-2">
+        <div className="relative m-2 ml-auto flex flex-col items-center rounded-md bg-green-500 p-2">
             <Loader2 className="animate-spin" />
         </div>
     }
 
     return (
         data ? (
-            <div className="relative m-2 ml-auto flex flex-col items-center rounded-md bg-green-400 p-2">
+            <div className="relative m-2 ml-auto flex flex-col items-center rounded-md bg-green-500 p-2">
                 <div className="flex flex-row">
                     <Image
                         src={data.item.album.images[0].url}
@@ -62,7 +62,7 @@ const CurrentPlayerInfo: React.FC<CurrentPlayerInfoProps> = ({ user }) => {
                 />
             </div>
         ) : (
-            <div className="relative m-2 ml-auto flex flex-col items-center rounded-md bg-green-400 p-2">
+            <div className="relative m-2 ml-auto flex flex-col items-center rounded-md bg-green-500 p-2">
                 <h1 className="flex flex-row"><AlertCircleIcon className="mr-2" />No Player Detected</h1>
             </div>
         )

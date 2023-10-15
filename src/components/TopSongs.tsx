@@ -65,17 +65,17 @@ const TopSongs: React.FC<TopSongsProps> = ({
                 className={cn(
                     "flex h-min flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900",
                     mobileAccessible
-                        ? "my-1 w-full p-2 2xl:m-0 2xl:mx-1 2xl:w-1/3"
+                        ? "my-2 w-full p-2 2xl:m-0 2xl:mx-1 2xl:w-1/3"
                         : "m-0 mx-1 w-1/3",
                     className,
                 )}
             >
-                <h1 className="ml-[15%] w-[70%] border-b-[1px] border-neutral-500 p-2 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white 2xl:mb-2">
+                <h1 className="mb-2 ml-[15%] w-[70%] border-b-[1px] border-neutral-500 p-2 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white">
                     Top Songs
                 </h1>
                 <div
                     className={cn(
-                        "flex overflow-x-auto",
+                        "flex overflow-x-auto overflow-y-hidden",
                         mobileAccessible ? "flex-row 2xl:flex-col" : "flex-col",
                     )}
                 >
