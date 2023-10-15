@@ -75,7 +75,7 @@ const TopSongs: React.FC<TopSongsProps> = ({
                 </h1>
                 <div
                     className={cn(
-                        "flex overflow-x-hidden",
+                        "flex overflow-x-auto",
                         mobileAccessible ? "flex-row 2xl:flex-col" : "flex-col",
                     )}
                 >

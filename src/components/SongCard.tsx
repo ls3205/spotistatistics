@@ -19,9 +19,10 @@ const SongCard: React.FC<SongCardProps> = ({
         <Link
             href={song.external_urls.spotify}
             className={cn(
+                "flex rounded-md py-2 transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 ",
                 mobileAccessible
-                    ? "flex aspect-square h-[150px] w-[125px] flex-col items-center justify-center rounded-md py-2 transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800 2xl:aspect-auto 2xl:h-min 2xl:w-full 2xl:flex-row 2xl:justify-start 2xl:pl-4 2xl:font-semibold"
-                    : "flex aspect-auto h-min w-full flex-row items-center justify-start rounded-md py-2 pl-4 font-semibold transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-800",
+                    ? "flex aspect-square h-[150px] w-[125px] flex-col items-center justify-center 2xl:aspect-auto 2xl:h-min 2xl:w-full 2xl:flex-row 2xl:justify-start 2xl:pl-4 2xl:font-semibold"
+                    : "flex aspect-auto h-min w-full flex-row items-center justify-start pl-4 font-semibold",
             )}
             target="_blank"
         >
