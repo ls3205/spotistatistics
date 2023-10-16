@@ -14,6 +14,7 @@ interface TopSongsProps {
     mobileAccessible?: boolean | true;
     className?: string;
     dataLength?: number | 10;
+    overflow?: "overflow-x-auto" | "overflow-x-hidden" | "overflow-x-scroll";
 }
 
 const TopSongs: React.FC<TopSongsProps> = ({
@@ -22,6 +23,7 @@ const TopSongs: React.FC<TopSongsProps> = ({
     mobileAccessible = true,
     className,
     dataLength = 10,
+    overflow = "overflow-x-auto",
 }) => {
     const { data, isLoading, error, refetch } = useQuery({
         queryKey: ["GetTopSongs"],
@@ -75,8 +77,9 @@ const TopSongs: React.FC<TopSongsProps> = ({
                 </h1>
                 <div
                     className={cn(
-                        "flex overflow-x-auto overflow-y-hidden",
+                        "flex overflow-y-hidden",
                         mobileAccessible ? "flex-row 2xl:flex-col" : "flex-col",
+                        overflow,
                     )}
                 >
                     {data.items.map((song, index) => {

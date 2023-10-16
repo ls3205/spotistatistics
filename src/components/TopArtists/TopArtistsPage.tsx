@@ -47,12 +47,12 @@ const TopArtistsPage: React.FC<TopArtistsPageProps> = ({ user }) => {
                 </TabsList>
             </Tabs>
 
-            <div className="mx-2 flex h-full w-[95%] flex-col mb-2 items-center">
+            <div className="mx-2 mb-2 flex h-full min-w-[95%] max-w-[95%] flex-col items-center xl:min-w-[66.66%] xl:max-w-[66.66%]">
                 <TopArtists
                     dataRange={dataRange}
                     user={user}
                     mobileAccessible={false}
-                    className="w-2/3"
+                    className="w-full"
                     dataLength={50}
                 />
             </div>

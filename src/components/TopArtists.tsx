@@ -16,6 +16,7 @@ interface TopArtistsProps {
     mobileAccessible?: boolean | true;
     className?: string;
     dataLength?: number | 10;
+    overflow?: "overflow-x-auto" | "overflow-x-hidden" | "overflow-x-scroll";
 }
 
 const TopArtists: React.FC<TopArtistsProps> = ({
@@ -24,6 +25,7 @@ const TopArtists: React.FC<TopArtistsProps> = ({
     mobileAccessible = true,
     className,
     dataLength = 10,
+    overflow = "overflow-x-auto",
 }) => {
     const { data, isLoading, error, refetch } = useQuery({
         queryKey: ["GetTopArtists"],
@@ -64,31 +66,32 @@ const TopArtists: React.FC<TopArtistsProps> = ({
     return (
         <div
             className={cn(
+                "flex h-min flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900",
                 mobileAccessible
-                    ? "my-1 flex h-min w-full flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:ml-0 2xl:w-1/3"
-                    : "mx-1 my-1 ml-0 flex h-min w-1/3 flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900",
+                    ? "my-2 w-full p-2 2xl:m-0 2xl:mx-1 2xl:w-1/3"
+                    : "m-0 mx-1 w-1/3",
                 className,
             )}
         >
-            <h1
-                className={
-                    mobileAccessible
-                        ? "ml-[15%] w-[70%] border-b-[1px] border-neutral-500 p-2 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white 2xl:mb-2"
-                        : "mb-2 ml-[15%] w-[70%] border-b-[1px] border-neutral-500 p-2 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white"
-                }
-            >
+            <h1 className="mb-2 ml-[15%] w-[70%] border-b-[1px] border-neutral-500 p-2 text-center text-2xl font-medium text-black dark:border-neutral-400 dark:text-white">
                 Top Artists
             </h1>
             <div
-                className={
-                    mobileAccessible
-                        ? "flex flex-row overflow-x-auto 2xl:flex-col"
-                        : "flex flex-col overflow-x-auto"
-                }
+                className={cn(
+                    "flex",
+                    mobileAccessible ? "flex-row 2xl:flex-col" : "flex-col",
+                    overflow,
+                )}
             >
                 {data &&
                     data.items.map((artist, index) => {
-                        return <ArtistCard artist={artist} index={index} mobileAccessible={mobileAccessible} />;
+                        return (
+                            <ArtistCard
+                                artist={artist}
+                                index={index}
+                                mobileAccessible={mobileAccessible}
+                            />
+                        );
                     })}
             </div>
         </div>

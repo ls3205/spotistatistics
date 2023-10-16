@@ -45,13 +45,14 @@ const TopSongsPage: React.FC<TopSongsPageProps> = ({ user }) => {
                 </TabsList>
             </Tabs>
 
-            <div className="mx-2 mb-2 flex h-full w-[95%] flex-col items-center">
+            <div className="mx-2 mb-2 flex h-full min-w-[95%] max-w-[95%] flex-col items-center xl:min-w-[66.66%] xl:max-w-[66.66%]">
                 <TopSongs
                     user={user}
                     dataRange={dataRange}
-                    className="w-2/3"
+                    className="w-full"
                     mobileAccessible={false}
                     dataLength={50}
+                    overflow="overflow-x-hidden"
                 />
             </div>
         </>
