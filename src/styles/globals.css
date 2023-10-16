@@ -12,6 +12,10 @@ body {
     .navbar-link {
         @apply relative ml-5 mr-5 w-[135px] text-center text-black transition-all duration-150 hover:text-green-500 data-[status=true]:text-xl data-[status=true]:text-green-500 dark:text-white dark:hover:text-green-500 dark:data-[status=true]:text-green-500;
     }
+
+    .mobile-navbar-link {
+        @apply relative my-4 ml-5 mr-5 w-[135px] text-left text-xl text-black transition-all duration-150 hover:text-green-500 data-[status=true]:text-2xl data-[status=true]:text-green-500 dark:text-white dark:hover:text-green-500 dark:data-[status=true]:text-green-500;
+    }
 }
 
 ::-webkit-scrollbar {
