@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 
     return user ? (
         <>
-            <div className="relative left-0 top-0 hidden w-full flex-row items-center justify-center md:flex">
+            <div className="relative left-0 top-0 hidden w-full flex-row items-center justify-center xl:flex">
                 <div className="mt-2 flex h-14 w-4/5 flex-row items-center rounded-md bg-neutral-100 dark:bg-neutral-900">
                     <div className="relative mr-auto flex h-full w-full flex-row items-center p-2">
                         <Link
@@ -78,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             </div>
 
             <Sheet>
-                <SheetTrigger className="relative my-2 flex h-auto w-[95%] flex-row justify-center rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 md:hidden">
+                <SheetTrigger className="relative my-2 flex h-auto w-[95%] flex-row justify-center rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 xl:hidden">
                     <AlignJustifyIcon className="absolute left-[2.5%] text-black dark:text-white" />
                     <h1 className="text-black dark:text-white">
                         spotistatistics
