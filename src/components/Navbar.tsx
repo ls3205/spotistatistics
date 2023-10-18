@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                             data-status={usePathname() == "/"}
                             className="navbar-link"
                         >
-                            spotistatistics
+                            Musistics
                         </Link>
                         <Separator orientation="vertical" />
                         <Link
@@ -72,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 <SheetTrigger className="relative my-2 flex h-auto w-[95%] flex-row justify-center rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 xl:hidden">
                     <AlignJustifyIcon className="absolute left-[2.5%] text-black dark:text-white" />
                     <h1 className="text-black dark:text-white">
-                        spotistatistics
+                        Musistics
                     </h1>
                 </SheetTrigger>
                 <SheetContent
