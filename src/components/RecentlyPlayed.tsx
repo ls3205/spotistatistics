@@ -73,7 +73,7 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({
                         return (
                             <RecentlyPlayedSongCard
                                 song={song.track}
-                                index={index}
+                                key={index}
                                 played_at={song.played_at}
                             />
                         );

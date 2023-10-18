@@ -5,13 +5,13 @@ import React from "react";
 
 export interface ArtistCardProps {
     artist: Artist;
-    index: number;
+    key: number;
     mobileAccessible?: boolean | true;
 }
 
 const ArtistCard: React.FC<ArtistCardProps> = ({
     artist,
-    index,
+    key,
     mobileAccessible = true,
 }) => {
     return (
@@ -33,7 +33,7 @@ const ArtistCard: React.FC<ArtistCardProps> = ({
                         : "mr-4 text-right",
                 )}
             >
-                {index + 1}
+                {key + 1}
             </h1>
             <Image
                 src={artist.images[1].url}

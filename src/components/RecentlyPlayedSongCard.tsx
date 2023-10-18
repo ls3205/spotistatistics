@@ -5,13 +5,13 @@ import React from "react";
 
 interface RecentlyPlayedSongCardProps {
     song: Song;
-    index: number;
+    key: number;
     played_at: string;
 }
 
 const RecentlyPlayedSongCard: React.FC<RecentlyPlayedSongCardProps> = ({
     song,
-    index,
+    key,
     played_at,
 }) => {
     return (
