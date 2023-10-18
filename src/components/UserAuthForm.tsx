@@ -27,7 +27,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({}) => {
                 width={25}
                 height={25}
             />
-            <p className="ml-2 text-lg">Login with Spotify</p>
+            <p className="ml-2 text-lg text-black dark:text-white">Login with Spotify</p>
         </Button>
     );
 };

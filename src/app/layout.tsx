@@ -1,3 +1,4 @@
+import Providers from "@/components/Providers";
 import "../styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -5,7 +6,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "spotistatistics",
+    title: "Musistics",
     description: "A Spotify statistics app",
 };
 
@@ -23,8 +24,16 @@ export default function RootLayout({
                     href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap"
                     rel="stylesheet"
                 />
+                <link
+                    rel="icon"
+                    href="/icon?<generated>"
+                    type="image/png"
+                    sizes="32x32"
+                />
             </head>
-            <body className={inter.className}>{children}</body>
+            <body className={inter.className}>
+                <Providers>{children}</Providers>
+            </body>
         </html>
     );
 }
