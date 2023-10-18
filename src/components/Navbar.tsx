@@ -87,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                             data-status={pathname == "/"}
                             className="mobile-navbar-link"
                         >
-                            spotistatistics
+                            Musistics
                         </Link>
                         <Separator
                             orientation="horizontal"
