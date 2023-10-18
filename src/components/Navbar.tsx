@@ -79,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     side={"left"}
                     className="flex flex-col border-neutral-100 bg-white dark:border-neutral-900 dark:bg-black"
                 >
-                    <div className="h-full rounded-md flex flex-col justify-center items-center bg-neutral-100 dark:bg-neutral-900">
+                    <div className="flex h-full flex-col items-center justify-center rounded-md bg-neutral-100 dark:bg-neutral-900">
                         <Link
                             href={"/"}
                             data-status={usePathname() == "/"}
@@ -87,7 +87,10 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         >
                             spotistatistics
                         </Link>
-                        <Separator orientation="horizontal" className="relative w-[95%]" />
+                        <Separator
+                            orientation="horizontal"
+                            className="relative w-[95%]"
+                        />
                         <Link
                             href={"/topartists"}
                             data-status={usePathname() === "/topartists"}
@@ -95,7 +98,10 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         >
                             Top Artists
                         </Link>
-                        <Separator orientation="horizontal" className="relative w-[95%]" />
+                        <Separator
+                            orientation="horizontal"
+                            className="relative w-[95%]"
+                        />
                         <Link
                             href={"/topsongs"}
                             data-status={usePathname() === "/topsongs"}
@@ -103,7 +109,10 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         >
                             Top Songs
                         </Link>
-                        <Separator orientation="horizontal" className="relative w-[95%]" />
+                        <Separator
+                            orientation="horizontal"
+                            className="relative w-[95%]"
+                        />
                         <Link
                             href={"/recents"}
                             data-status={usePathname() === "/recents"}
@@ -111,7 +120,10 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         >
                             Recently Played
                         </Link>
-                        <Separator orientation="horizontal" className="relative w-[95%]" />
+                        <Separator
+                            orientation="horizontal"
+                            className="relative w-[95%]"
+                        />
                         <Link
                             href={"/player"}
                             data-status={usePathname() === "/player"}

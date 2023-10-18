@@ -28,7 +28,7 @@ const RecentlyPlayedSongCard: React.FC<RecentlyPlayedSongCardProps> = ({
                 className="mr-2 h-[50px] w-[50px] rounded-md object-cover"
             />
 
-            <div className="flex flex-col">
+            <div className="flex flex-col overflow-hidden">
                 <h1 className="overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white">
                     {song.name}
                 </h1>
@@ -37,7 +37,7 @@ const RecentlyPlayedSongCard: React.FC<RecentlyPlayedSongCardProps> = ({
                 </h3>
             </div>
 
-            <div className="relative ml-auto mr-4 flex h-full w-auto flex-col items-center text-neutral-500 dark:text-neutral-400 ">
+            <div className="relative ml-auto mr-4 flex h-full w-[50px] flex-col items-center text-neutral-500 dark:text-neutral-400 ">
                 <HistoryIcon />
                 {Date.now() - new Date(played_at).getTime() < 3600000
                     ? Math.round(

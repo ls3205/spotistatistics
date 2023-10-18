@@ -10,7 +10,7 @@ body {
 
 @layer utilities {
     .navbar-link {
-        @apply relative ml-5 mr-5 w-[135px] text-center text-black transition-all duration-150 hover:text-green-500 data-[status=true]:text-xl data-[status=true]:text-green-500 dark:text-white dark:hover:text-green-500 dark:data-[status=true]:text-green-500;
+        @apply relative ml-5 mr-5 w-[145px] text-center text-black transition-all duration-150 hover:text-green-500 data-[status=true]:text-lg data-[status=true]:text-green-500 dark:text-white dark:hover:text-green-500 dark:data-[status=true]:text-green-500;
     }
 
     .mobile-navbar-link {
