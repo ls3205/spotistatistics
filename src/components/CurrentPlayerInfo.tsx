@@ -5,7 +5,7 @@ import axios from "axios";
 import { User } from "next-auth";
 import Image from "next/image";
 import React from "react";
-import { Progress } from "./ui/progress";
+import { Progress } from "./ui/Progress";
 import { AlertCircleIcon, Loader2 } from "lucide-react";
 
 interface CurrentPlayerInfoProps {
