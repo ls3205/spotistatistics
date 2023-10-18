@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import ThemeToggle from "./ThemeToggle";
 import AccountDropdown from "./AccountDropdown";
-import { User, getServerSession } from "next-auth";
+import { User } from "next-auth";
 import { redirect, usePathname } from "next/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/Sheet";
 import { AlignJustifyIcon } from "lucide-react";
@@ -15,6 +15,8 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ user }) => {
+    const pathname = usePathname();
+
     return user ? (
         <>
             <div className="relative left-0 top-0 hidden w-full flex-row items-center justify-center xl:flex">
@@ -22,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     <div className="relative mr-auto flex h-full w-full flex-row items-center p-2">
                         <Link
                             href={"/"}
-                            data-status={usePathname() == "/"}
+                            data-status={pathname == "/"}
                             className="navbar-link"
                         >
                             Musistics
@@ -30,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         <Separator orientation="vertical" />
                         <Link
                             href={"/topartists"}
-                            data-status={usePathname() === "/topartists"}
+                            data-status={pathname === "/topartists"}
                             className="navbar-link"
                         >
                             Top Artists
@@ -38,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         <Separator orientation="vertical" />
                         <Link
                             href={"/topsongs"}
-                            data-status={usePathname() === "/topsongs"}
+                            data-status={pathname === "/topsongs"}
                             className="navbar-link"
                         >
                             Top Songs
@@ -46,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         <Separator orientation="vertical" />
                         <Link
                             href={"/recents"}
-                            data-status={usePathname() === "/recents"}
+                            data-status={pathname === "/recents"}
                             className="navbar-link"
                         >
                             Recently Played
@@ -54,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         <Separator orientation="vertical" />
                         <Link
                             href={"/player"}
-                            data-status={usePathname() === "/player"}
+                            data-status={pathname === "/player"}
                             className="navbar-link"
                         >
                             Spotify Player
@@ -82,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     <div className="flex h-full flex-col items-center justify-center rounded-md bg-neutral-100 dark:bg-neutral-900">
                         <Link
                             href={"/"}
-                            data-status={usePathname() == "/"}
+                            data-status={pathname == "/"}
                             className="mobile-navbar-link"
                         >
                             spotistatistics
@@ -93,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         />
                         <Link
                             href={"/topartists"}
-                            data-status={usePathname() === "/topartists"}
+                            data-status={pathname === "/topartists"}
                             className="mobile-navbar-link"
                         >
                             Top Artists
@@ -104,7 +106,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         />
                         <Link
                             href={"/topsongs"}
-                            data-status={usePathname() === "/topsongs"}
+                            data-status={pathname === "/topsongs"}
                             className="mobile-navbar-link"
                         >
                             Top Songs
@@ -115,7 +117,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         />
                         <Link
                             href={"/recents"}
-                            data-status={usePathname() === "/recents"}
+                            data-status={pathname === "/recents"}
                             className="mobile-navbar-link"
                         >
                             Recently Played
@@ -126,7 +128,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         />
                         <Link
                             href={"/player"}
-                            data-status={usePathname() === "/player"}
+                            data-status={pathname === "/player"}
                             className="mobile-navbar-link"
                         >
                             Spotify Player
