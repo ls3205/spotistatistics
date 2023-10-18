@@ -6,12 +6,14 @@ import React from "react";
 
 interface SongCardProps {
     song: Song;
+    index: number;
     key: number;
     mobileAccessible?: boolean | true;
 }
 
 const SongCard: React.FC<SongCardProps> = ({
     song,
+    index,
     key,
     mobileAccessible = true,
 }) => {
@@ -34,7 +36,7 @@ const SongCard: React.FC<SongCardProps> = ({
                         : "mr-4 text-right",
                 )}
             >
-                {key + 1}
+                {index + 1}
             </h1>
             <Image
                 src={song.album.images[1].url}

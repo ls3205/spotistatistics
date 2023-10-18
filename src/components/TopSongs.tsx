@@ -86,6 +86,7 @@ const TopSongs: React.FC<TopSongsProps> = ({
                         return (
                             <SongCard
                                 song={song}
+                                index={index}
                                 key={index}
                                 mobileAccessible={mobileAccessible}
                             />
