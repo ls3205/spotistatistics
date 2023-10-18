@@ -88,6 +88,7 @@ const TopArtists: React.FC<TopArtistsProps> = ({
                         return (
                             <ArtistCard
                                 artist={artist}
+                                index={index}
                                 key={index}
                                 mobileAccessible={mobileAccessible}
                             />
