@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import SpotifyTag from "./SpotifyTag";
 
 export interface ArtistCardProps {
     artist: Artist;
@@ -49,14 +50,33 @@ const ArtistCard: React.FC<ArtistCardProps> = ({
                         : "mr-2 h-[50px] w-[50px]",
                 )}
             />
-            <h1
+            {/* <h1
                 className={cn(
-                    "overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white",
-                    mobileAccessible ? "mt-3 2xl:mt-0" : "mt-0",
+                    "min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white",
+                    mobileAccessible ? "w-[130px] mt-3 text-center 2xl:mt-0 2xl:text-left" : "mt-0 text-left",
                 )}
             >
                 {artist.name}
-            </h1>
+            </h1> */}
+
+            <div
+                className={cn(
+                    "flex flex-row",
+                    mobileAccessible
+                        ? "mt-3 w-[130px] justify-center text-center 2xl:mt-0 2xl:w-auto 2xl:justify-normal"
+                        : "mt-0 justify-normal",
+                )}
+            >
+                <h1 className="min-w-0 max-w-[calc(100%-32px)] overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white 2xl:w-auto">
+                    {artist.name}
+                </h1>
+                <SpotifyTag
+                    className={cn(
+                        "h-6 w-6",
+                        mobileAccessible ? "ml-1 2xl:ml-2" : "ml-2",
+                    )}
+                />
+            </div>
         </Link>
     );
 };

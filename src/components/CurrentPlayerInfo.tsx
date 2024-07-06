@@ -45,7 +45,7 @@ const CurrentPlayerInfo: React.FC<CurrentPlayerInfoProps> = ({ user }) => {
                         alt="Song Playing Image"
                         width={150}
                         height={150}
-                        className="h-16 w-16 rounded-md"
+                        className="h-16 w-16"
                     />
                     <div className="flex flex-col justify-center ml-2">
                         <h1 className="font-medium text-black">

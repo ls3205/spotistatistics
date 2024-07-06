@@ -3,6 +3,7 @@ import { HistoryIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import SpotifyTag from "./SpotifyTag";
 
 interface SongCardProps {
     song: Song;
@@ -44,7 +45,7 @@ const SongCard: React.FC<SongCardProps> = ({
                 width={150}
                 height={150}
                 className={cn(
-                    "rounded-md object-cover",
+                    "object-cover",
                     mobileAccessible
                         ? "h-[75px] w-[75px] 2xl:mr-2 2xl:h-[50px] 2xl:w-[50px]"
                         : "mr-2 h-[50px] w-[50px]",
@@ -52,23 +53,42 @@ const SongCard: React.FC<SongCardProps> = ({
             />
             <div
                 className={cn(
-                    "flex flex-col",
+                    "flex flex-col overflow-hidden w-full",
                     mobileAccessible
-                        ? "max-w-[125px] items-center 2xl:max-w-full 2xl:items-start"
+                        ? "items-center 2xl:items-start"
                         : "items-start",
                 )}
             >
-                <h1
+                <div
                     className={cn(
-                        "overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white max-w-full",
-                        mobileAccessible ? "mt-3 2xl:mt-0" : "mt-0",
+                        "h-6",
+                        mobileAccessible
+                            ? "mt-3 w-[130px] 2xl:mt-0 2xl:w-full"
+                            : "mt-0 w-full",
                     )}
                 >
-                    {song.name}
-                </h1>
+                    <div
+                        className={cn(
+                            "flex flex-row",
+                            mobileAccessible
+                                ? "justify-center 2xl:justify-normal"
+                                : "justify-normal",
+                        )}
+                    >
+                        <h1 className="min-w-0 max-w-[calc(100%-32px)] overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white 2xl:w-auto">
+                            {song.name}
+                        </h1>
+                        <SpotifyTag
+                            className={cn(
+                                "h-6 w-6",
+                                mobileAccessible ? "ml-1 2xl:ml-2" : "ml-2",
+                            )}
+                        />
+                    </div>
+                </div>
                 <h3
                     className={cn(
-                        "overflow-hidden text-ellipsis whitespace-nowrap text-neutral-500 dark:text-neutral-400 max-w-full",
+                        "max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-neutral-500 dark:text-neutral-400",
                         mobileAccessible ? "text-xs" : "text-base",
                     )}
                 >

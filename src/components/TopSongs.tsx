@@ -82,7 +82,7 @@ const TopSongs: React.FC<TopSongsProps> = ({
                         overflow,
                     )}
                 >
-                    {data.items.map((song, index) => {
+                    {data.items.map((song: Song, index: number) => {
                         return (
                             <SongCard
                                 song={song}
