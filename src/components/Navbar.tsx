@@ -64,7 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     </div>
                     <div className="relative ml-auto flex h-full flex-row justify-center py-2">
                         <Separator orientation="vertical" />
-                        <ThemeToggle />
+                        {/* <ThemeToggle /> */}
                         <AccountDropdown user={user} />
                     </div>
                 </div>
@@ -135,7 +135,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         </Link>
                     </div>
                     <div className="relative mt-auto flex flex-row justify-center rounded-md bg-neutral-100 py-5 dark:bg-neutral-900">
-                        <ThemeToggle />
+                        {/* <ThemeToggle /> */}
                         <AccountDropdown user={user} />
                     </div>
                 </SheetContent>
