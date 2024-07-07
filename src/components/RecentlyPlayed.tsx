@@ -59,8 +59,8 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({
             className={cn(
                 "flex h-min flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900",
                 mobileAccessible
-                    ? "my-2 w-full p-2 2xl:m-0 2xl:mx-1 2xl:w-1/3"
-                    : "m-0 mx-1 w-1/3",
+                    ? "my-2 w-full p-2 2xl:m-0 2xl:ml-1 2xl:w-1/3"
+                    : "m-0 ml-1 w-1/3",
                 className,
             )}
         >
