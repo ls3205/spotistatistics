@@ -18,7 +18,7 @@ const HomePage: React.FC<HomePageProps> = ({ user }) => {
         <>
             <Tabs
                 defaultValue={dataRange}
-                className="mx-2 flex h-full min-w-[95%] flex-col 2xl:mb-2 2xl:flex-row z-50"
+                className="mx-2 flex h-full min-w-[95%] flex-col 2xl:mb-1 2xl:flex-row z-50"
             >
                 <TabsList className="fixed bottom-0 left-0 w-full rounded-b-none bg-neutral-100 dark:bg-neutral-900">
                     <TabsTrigger
@@ -45,7 +45,7 @@ const HomePage: React.FC<HomePageProps> = ({ user }) => {
                 </TabsList>
             </Tabs>
 
-            <div className="mx-2 flex h-full w-[95%] flex-col 2xl:mb-2 2xl:flex-row">
+            <div className="mx-1 flex h-full w-[95%] flex-col 2xl:mb-2 2xl:flex-row">
                 <TopArtists user={user} dataRange={dataRange} />
                 <TopSongs user={user} dataRange={dataRange} />
                 <RecentlyPlayed user={user} />

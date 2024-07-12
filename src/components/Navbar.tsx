@@ -64,7 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     </div>
                     <div className="relative ml-auto flex h-full flex-row justify-center py-2">
                         <Separator orientation="vertical" />
-                        <ThemeToggle />
+                        {/* <ThemeToggle /> */}
                         <AccountDropdown user={user} />
                     </div>
                 </div>
@@ -73,9 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             <Sheet>
                 <SheetTrigger className="relative my-2 flex h-auto w-[95%] flex-row justify-center rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 xl:hidden">
                     <AlignJustifyIcon className="absolute left-[2.5%] text-black dark:text-white" />
-                    <h1 className="text-black dark:text-white">
-                        Musistics
-                    </h1>
+                    <h1 className="text-black dark:text-white">Musistics</h1>
                 </SheetTrigger>
                 <SheetContent
                     side={"left"}
@@ -135,7 +133,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         </Link>
                     </div>
                     <div className="relative mt-auto flex flex-row justify-center rounded-md bg-neutral-100 py-5 dark:bg-neutral-900">
-                        <ThemeToggle />
+                        {/* <ThemeToggle /> */}
                         <AccountDropdown user={user} />
                     </div>
                 </SheetContent>

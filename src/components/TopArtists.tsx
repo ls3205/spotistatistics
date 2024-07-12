@@ -27,7 +27,7 @@ const TopArtists: React.FC<TopArtistsProps> = ({
     dataLength = 10,
     overflow = "overflow-x-auto",
 }) => {
-    const { data, isLoading, error, refetch } = useQuery({
+    const { data, isLoading, isFetching, error, refetch } = useQuery({
         queryKey: ["GetTopArtists"],
         queryFn: async () => {
             const { data } = await axios.get(
@@ -55,6 +55,14 @@ const TopArtists: React.FC<TopArtistsProps> = ({
         );
     }
 
+    if (isFetching) {
+        return (
+            <div className="m-2 flex h-44 w-full items-center justify-center rounded-md bg-neutral-100 p-2 align-middle dark:bg-neutral-900 2xl:m-0 2xl:mx-1 2xl:w-1/3">
+                <Loader2 className="animate-spin text-black dark:text-white" />
+            </div>
+        );
+    }
+
     if (error) {
         return (
             <div className="m-2 h-auto w-full rounded-md bg-neutral-100 p-2 dark:bg-neutral-900 2xl:m-0 2xl:mx-1">
@@ -68,8 +76,8 @@ const TopArtists: React.FC<TopArtistsProps> = ({
             className={cn(
                 "flex h-min flex-col rounded-md bg-neutral-100 p-2 dark:bg-neutral-900",
                 mobileAccessible
-                    ? "my-2 w-full p-2 2xl:m-0 2xl:mx-1 2xl:w-1/3"
-                    : "m-0 mx-1 w-1/3",
+                    ? "my-2 w-full p-2 2xl:m-0 2xl:mr-1 2xl:w-1/3"
+                    : "m-0 mr-1 w-1/3",
                 className,
             )}
         >

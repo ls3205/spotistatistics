@@ -29,18 +29,6 @@ const RecentlyPlayedSongCard: React.FC<RecentlyPlayedSongCardProps> = ({
                 className="mr-2 h-[50px] w-[50px] object-cover"
             />
 
-            {/* <div className="flex w-full flex-col overflow-hidden">
-                <div className="flex flex-row">
-                    <h1 className="min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-black dark:text-white">
-                        {song.name}
-                    </h1>
-                    <SpotifyTag className="ml-2 h-6 w-6" />
-                </div>
-                <h3 className="overflow-hidden text-ellipsis whitespace-nowrap text-xs text-neutral-500 dark:text-neutral-400">
-                    {song.artists[0].name}
-                </h3>
-            </div> */}
-
             <div className="flex w-[calc(100%-66px-58px)] flex-col overflow-hidden">
                 <div className="h-6 w-full">
                     <div className="flex flex-row">
@@ -55,7 +43,7 @@ const RecentlyPlayedSongCard: React.FC<RecentlyPlayedSongCardProps> = ({
                 </h3>
             </div>
 
-            <div className="absolute right-4 top-[8px] flex h-full w-[50px] flex-col items-center text-neutral-500 dark:text-neutral-400">
+            <div className="absolute right-4 top-[12px] flex h-[44px] w-[50px] flex-col items-center text-neutral-500 dark:text-neutral-400">
                 <HistoryIcon />
                 {Date.now() - new Date(played_at).getTime() < 3600000
                     ? Math.round(
