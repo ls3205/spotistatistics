@@ -14,6 +14,7 @@ interface CurrentPlayerInfoProps {
 
 const CurrentPlayerInfo: React.FC<CurrentPlayerInfoProps> = ({ user }) => {
     const { data, isLoading, error, refetch, isSuccess } = useQuery({
+        refetchOnWindowFocus: true,
         queryKey: ["GetPlayerData"],
         queryFn: async () => {
             const { data } = await axios.get(
